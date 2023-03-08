@@ -39,15 +39,16 @@ where title = 'Nevermind';
 -- ------------------------
 
 -- 6. Write a query to determine how many musicians are in the database.
-Select COUNT (musicianId) 
-From Musician;
+Select COUNT(*) from Musician;
 
 -- 7. Write a (nested) query to list the oldest album(s) in the database.
+Select * from Album where year = 
+(Select MIN(year) from Album);
 
 -- 8. Write a query to find the total running time (in seconds) of all 
 --    tracks on the album *Rain Dogs* by Tom Waits
-Select Sum (trackLength) from albumSong
-where title = 'Rain Dogs';
+Select SUM(trackLength) from albumSong
+where AlbumSong.albumId = Album.album=Id;
 
 -- Join Queries 
 -- ------------
@@ -60,6 +61,9 @@ where title = 'Rain Dogs';
 
 -- 11. Write a query that list all bands along with all their albums in 
 --     the database *even if they do not have any*.
+Select Album.bandId, Band.bandId
+from Album
+Inner Join Band on Album.bandId = Band.bandId;
 
 -- Grouped Join Queries 
 -- --------------------
