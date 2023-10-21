@@ -10,6 +10,8 @@ public class Main {
         Account currentAccount = null;
         //current account shouldn't be null
         List<Post> postList = new ArrayList<>();
+        TextArtPost textArtPost = new TextArtPost("");
+        List<String[]> options = TextArtPost.OPTIONS;
 
         
         
@@ -78,17 +80,28 @@ public class Main {
             	while(true) {
             		switch(choice) {
             		case "0":
-            			//add bear 
+            			String[] bearArt = options.get(0); 
+            			for(String artPost : bearArt)
+            			System.out.println(artPost);
             			
             			continue;
             			
             		case "1":
+            			String[] welcome = options.get(1); 
+            			for(String artPost : welcome)
+            			System.out.println(artPost);
             			continue;
             			
             		case "2":
+            			String[] phone = options.get(2); 
+            			for(String artPost : phone)
+            			System.out.println(artPost);
             			continue;
             			
             		case "3":
+            			String[] smile = options.get(3); 
+            			for(String artPost : smile)
+            			System.out.println(artPost);
             			continue;
             		}
             		break;
