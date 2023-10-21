@@ -5,8 +5,21 @@ import java.util.*;
 
 public class TextArtPost extends Post implements PostContentFormatter {
 	public final static List<String[]> OPTIONS;
+    public String textArt;
+    public TextArtPost(String textArt) {
+    	this.textArt= textArt;
+    }
     
-    static { // initialize when the class is loaded
+    public String getTextArt() {
+		return textArt;
+	}
+
+
+	public void setTextArt(String textArt) {
+		this.textArt = textArt;
+	}
+
+	static { // initialize when the class is loaded
     	OPTIONS = initTextArtOptions();
     }
     
@@ -41,6 +54,7 @@ public class TextArtPost extends Post implements PostContentFormatter {
     	textArts.add(smile);
     	return textArts;
     }
+    
 
 	@Override
 	public String getFormattedContent() {
