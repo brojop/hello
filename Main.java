@@ -6,11 +6,9 @@ public class Main {
 
     public static void main(String[] args) {
         Map<String, Account> accountMap = new HashMap<>();
-        //fix accounts
-        Account currentAccount = null;
         //current account shouldn't be null
         List<Post> postList = new ArrayList<>();
-        TextArtPost textArtPost = new TextArtPost("");
+        new TextArtPost("");
         List<String[]> options = TextArtPost.OPTIONS;
 
         
@@ -84,25 +82,26 @@ public class Main {
             			for(String artPost : bearArt)
             			System.out.println(artPost);
             			
-            			continue;
+            			break;
             			
             		case "1":
             			String[] welcome = options.get(1); 
             			for(String artPost : welcome)
             			System.out.println(artPost);
-            			continue;
+            			break;
             			
             		case "2":
             			String[] phone = options.get(2); 
             			for(String artPost : phone)
             			System.out.println(artPost);
-            			continue;
+            			break;
             			
             		case "3":
             			String[] smile = options.get(3); 
             			for(String artPost : smile)
             			System.out.println(artPost);
-            			continue;
+            			//postList.add(smile);
+            			break;
             		}
             		break;
             	}
@@ -114,9 +113,9 @@ public class Main {
            	
             case "T":
             	System.out.println("Please write your text post: ");
-            	String sentence = s.next();
-            	sentence += s.nextLine();
-            	// postList.(sentence)
+            	s.next();
+            	s.nextLine();
+            	
             	Views.postViewWindow(postList);
             	userInput = s.next();
             	
@@ -146,11 +145,11 @@ public class Main {
        		userInput = s.next();
         }   
         
-        close(s);
+        close();
     }
     }
     
-	private static void close(Scanner s) {
+	private static void close() {
 		return;		
 	}
 	
