@@ -4,12 +4,14 @@ import java.util.*;
 
 public class Main {
 
-    public static void main(String[] args) {
+    private static final Account currentAccount = null;
+
+	public static void main(String[] args) {
         Map<String, Account> accountMap = new HashMap<>();
         
-        //current account shouldn't be null
+        
         List<Post> postList = new ArrayList<>();
-        List<String> outputList = new ArrayList<>();
+        
         new TextArtPost("");
         List<String[]> options = TextArtPost.OPTIONS;
 
@@ -60,8 +62,8 @@ public class Main {
         	
         	
         	Views.postViewWindow(postList);
-        	for(String history : outputList) {
-        		System.out.println(history);
+        	for(Post art : postList) {
+        		System.out.println(art);
         		System.out.println();
         		System.out.println();
         	}
@@ -72,8 +74,9 @@ public class Main {
         	
         	case "+":
                	Views.newPostWindow();
-               	for(String history : outputList) {
-            		System.out.println(history);
+               	
+            	for(Post art : postList) {
+            		System.out.println(art);
             		System.out.println();
             		System.out.println();
             	}
@@ -89,8 +92,11 @@ public class Main {
             		
             		case "0":
             			String[] bearArt = options.get(0); 
-            			for(String artPost : bearArt)
-            			System.out.println(artPost);
+            			for(String artPost : bearArt) {
+            				TextArtPost art = new TextArtPost(artPost);
+            				art.setUsername(currentAccount);
+            				postList.add(art);
+            			System.out.println(artPost);}
             			String currentAccount0 = username;
             			System.out.println(currentAccount0);
             			
@@ -100,35 +106,46 @@ public class Main {
             			
             		case "1":
             			String[] welcome = options.get(1); 
-            			for(String artPost : welcome)
-            			System.out.println(artPost);
+            			for(String artPost : welcome) {
+            				TextArtPost art = new TextArtPost(artPost);
+            				art.setUsername(currentAccount);
+            				postList.add(art);
+            			System.out.println(artPost);}
             			String currentAccount1 = username;
             			System.out.println(currentAccount1);
+            			
             			break;
             			
             		case "2":
             			String[] phone = options.get(2); 
-            			for(String artPost : phone)
-            			System.out.println(artPost);
+            			for(String artPost : phone) {
+            				TextArtPost art = new TextArtPost(artPost);
+            				art.setUsername(currentAccount);
+            				postList.add(art);
+            			System.out.println(artPost);}
             			String currentAccount2 = username;
             			System.out.println(currentAccount2);
             			break;
             			
             		case "3":
             			String[] smile = options.get(3); 
-            			for(String artPost : smile)
-            			System.out.println(artPost);
+            			for(String artPost : smile) {
+            				TextArtPost art = new TextArtPost(artPost);
+            				art.setUsername(currentAccount);
+            				postList.add(art);
+            			System.out.println(artPost);}
             			String currentAccount3 = username;
             			System.out.println(currentAccount3);
-            			//postList.add(smile);
+            			
             			break;
             		}
             		break;
             	}
             	
+            	
             	Views.postViewWindow(postList);
-            	for(String history : outputList) {
-            		System.out.println(history);
+            	for(Post art : postList) {
+            		System.out.println(art);
             		System.out.println();
             		System.out.println();
             	}
@@ -141,11 +158,17 @@ public class Main {
             	System.out.println("Please write your text post: ");
             	String firstWord=s.next();
             	String words = s.nextLine();
+            	String fullSentence = firstWord+words;
+            	TextPost text = new TextPost(fullSentence);
+            	postList.add(text);
             	Views.postViewWindow(postList);
             	String currentAccount = username;
-            	System.out.println(firstWord+words);
+            	 
+            		
+            	
+            	System.out.println(fullSentence);
             	System.out.println(currentAccount);
-            	outputList.add(firstWord+words);
+            	
             	userInput = s.next();
             	
             	continue;
@@ -177,7 +200,7 @@ public class Main {
        		userInput = s.next();
         }   
         
-        close();
+       close();
     }
     }
     
