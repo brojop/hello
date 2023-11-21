@@ -1,4 +1,4 @@
-package switchCases;
+package unl.soc;
 
 import java.util.*;
 
