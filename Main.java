@@ -1,10 +1,38 @@
 package unl.soc;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.*;
 
 public class Main {
 
 	public static void main(String[] args) {
+		
+		try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String url = "jdbc:mysql://localhost:3306/your_database";
+            String username = "your_username";
+            String password = "your_password";
+            Connection connection = DriverManager.getConnection(url, username, password);
+
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM your_table");
+
+            while (resultSet.next()) {
+                // Process each row
+            }
+
+            resultSet.close();
+            statement.close();
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    
+
+		
 		try (Scanner s = new Scanner(System.in)) {
 			while(true) {
 				//insert first window
