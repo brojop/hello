@@ -9,24 +9,21 @@ import java.util.*;
 
 public class Main {
 
-	public static void main(String[] args, Connection connection) {
+	
+	
+	public static void main(String[] args) {
+		
 		try (Scanner s = new Scanner(System.in)) {
-			try {
-				Class.forName("com.mysql.cj.jdbc.Driver");
-				Connection sqlConnection = DriverManager.getConnection(Database.url, Database.username, Database.password);
-			} catch (ClassNotFoundException | SQLException e) {
-				
-				e.printStackTrace();
-			}
+			
 			
 			while(true) {
-
+				Connection connection = Database.SQLconnect();
 				Screens.mainWindow();
 				String userInput;
 				System.out.println("Enter your username: ");
 				String Username = s.next();
 				//check for username and password here
-				String statement1 ="SELECT * FROM User WHERE username = ?";
+				String statement1 ="SELECT * FROM Users WHERE username = ?";
 				try (PreparedStatement SQLcheck = connection.prepareStatement(statement1)) {
 	                // Set the parameter value
 					SQLcheck.setString(1, Username);
@@ -50,7 +47,7 @@ public class Main {
 				
 				System.out.println("Enter your password: ");
 				String Password = s.next();
-				String statement2 ="SELECT * FROM User WHERE password = ?";
+				String statement2 ="SELECT * FROM Users WHERE password = ?";
 				try (PreparedStatement SQLcheck = connection.prepareStatement(statement2)) {
 	                // Set the parameter value
 					SQLcheck.setString(1, Password);
@@ -65,7 +62,7 @@ public class Main {
 	                    System.out.println("Your username isn't in the Database");
 	                }
 	            } catch (SQLException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}
 				
