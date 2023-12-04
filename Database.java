@@ -10,26 +10,27 @@ public class Database {
 	public final static String username = "brojop"; // your database username
 	public final static String password = "FWWbaQc0"; // your database password
 	public final static String url = "jdbc:mysql:cse/brojop";
-	private Connection connection;
 	
 	
-	public Database() {
+	
+	
+	private static Connection connection;
+	public static void SQLconnect() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(url, username, password);
-        } catch (Exception e) {
+            System.out.println("Connected to the database");
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public Connection getConnection() {
-        return connection;
-    }
-
-    public void closeConnection() {
+    // Close the database connection
+    public static void closeConnection() {
         try {
-            if (connection != null && !connection.isClosed()) {
+            if (connection != null) {
                 connection.close();
+                System.out.println("Database connection closed");
             }
         } catch (SQLException e) {
             e.printStackTrace();

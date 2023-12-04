@@ -46,10 +46,6 @@ public class Screens {
 		System.out.println(ANSI_Cyan + " ========================================");
 		System.out.println("|  My post and visible posts             |");
 		System.out.println("|                                        |");
-		// for (Post p : posts) {
-		// System.out.print(p.getFormattedContent());
-		// System.out.printf("|%40s|\n", p.tag());
-		// }
 		System.out.println("|                                        |");
 		System.out.println("|                                        |");
 		System.out.println("| (+) Publish a new post                 |");

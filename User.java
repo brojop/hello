@@ -7,7 +7,7 @@ public class User {
 	private String visibilityList;
 
 	public User(int userID, String username, String password, String visibilityList) {
-		super();
+		
 		this.userID = userID;
 		this.username = username;
 		this.password = password;
