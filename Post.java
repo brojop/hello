@@ -6,14 +6,14 @@ public class Post {
 	private int postID;
 	private int userID;
 	private String postText;
-	private LocalDateTime postTime;
+	private static String postTime;
 
-	public Post(int postID, int userID, String postText, LocalDateTime postTime) {
+	public Post(int postID, int userID, String postText, String postTime) {
 		super();
 		this.postID = postID;
 		this.userID = userID;
 		this.postText = postText;
-		this.postTime = postTime;
+		Post.postTime = postTime;
 	}
 
 	public int getPostID() {
@@ -40,12 +40,12 @@ public class Post {
 		this.postText = postText;
 	}
 
-	public LocalDateTime getPostTime() {
+	public static String getPostTime() {
 		return postTime;
 	}
 
-	public void setPostTime(LocalDateTime postTime) {
-		this.postTime = postTime;
+	public void setPostTime(String postTime) {
+		Post.postTime = postTime;
 	}
 
 }
