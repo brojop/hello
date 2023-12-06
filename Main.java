@@ -76,7 +76,7 @@ public class Main {
 						while (postPrint.next()) {
 							int columns = postPrint.getMetaData().getColumnCount();
 							for (int i = 1; i <= columns; i++) {
-								System.out.println(postPrint.getString(i) + "/=)");
+								System.out.println(postPrint.getString(i));
 							}
 						}
 					}
@@ -122,7 +122,7 @@ public class Main {
 								while (postPrint.next()) {
 									int columns = postPrint.getMetaData().getColumnCount();
 									for (int i = 1; i <= columns; i++) {
-										System.out.println(postPrint.getString(i) + "/=)");
+										System.out.println(postPrint.getString(i));
 									}
 								}
 							}

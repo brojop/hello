@@ -1,6 +1,10 @@
 package unl.soc;
 
+import java.sql.Connection;
+
 public class Screens {
+	Connection connection = Database.SQLconnect();
+	static int users = Database.getnumberOfRows(null, null, null, null);
 	public static final String ANSI_RESET = "\u001B[0m";
 
 	public static final String ANSI_Green = "\u001B[32m";
@@ -25,7 +29,7 @@ public class Screens {
 		System.out.println("|                                        |");
 		System.out.println("|                                        |");
 		System.out.println("|                                        |");
-		System.out.println("|Current Number of users in database ()  |");
+		System.out.println("|Current Number of users in database ("+users+")  |");
 		System.out.println("|                                        |");
 		System.out.println("|                                        |");
 		System.out.println(" ========================================" + ANSI_RESET);
@@ -51,7 +55,7 @@ public class Screens {
 		System.out.println("| (+) Publish a new post                 |");
 		System.out.println("| (B) Back                               |");
 		System.out.println("|                                        |");
-		System.out.println("| Current user : Alice                   |");
+		System.out.println("| Current user :                    |");
 		System.out.println(" ========================================" + ANSI_RESET);
 
 	}
