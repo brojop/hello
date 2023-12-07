@@ -5,6 +5,8 @@ import java.sql.Connection;
 public class Screens {
 	Connection connection = Database.SQLconnect();
 	static int users = Database.getnumberOfRows(null, null, null, null);
+	static Class<User> Username = User.class;
+	
 	public static final String ANSI_RESET = "\u001B[0m";
 
 	public static final String ANSI_Green = "\u001B[32m";
@@ -42,12 +44,12 @@ public class Screens {
 		System.out.println("| (V) Post Visibility                    |");
 		System.out.println("| (Q) Quit                               |");
 		System.out.println("|                                        |");
-		System.out.println("|  Current User :                        |");
+		
 		System.out.println(" ========================================" + ANSI_RESET);
 	}
 
 	public static void postWindow() {
-		System.out.println(ANSI_Cyan + " ========================================");
+		System.out.println(" ========================================");
 		System.out.println("|  My post and visible posts             |");
 		System.out.println("|                                        |");
 		System.out.println("|                                        |");
@@ -55,13 +57,13 @@ public class Screens {
 		System.out.println("| (+) Publish a new post                 |");
 		System.out.println("| (B) Back                               |");
 		System.out.println("|                                        |");
-		System.out.println("| Current user :                    |");
-		System.out.println(" ========================================" + ANSI_RESET);
+		
+		
 
 	}
 
 	public static void visibilityWindow() {
-		System.out.println(ANSI_Yellow + " ========================================");
+		System.out.println(" ========================================");
 		System.out.println("|                                        |");
 		System.out.println("|   Your Posts are Visible to:           |");
 		System.out.println("|                                        |");
@@ -69,7 +71,7 @@ public class Screens {
 		System.out.println("|   (-) Delete a user                    |");
 		System.out.println("|   (B) Back                             |");
 		System.out.println("|                                        |");
-		System.out.println("|   Current User :                       |");
+		
 
 	}
 

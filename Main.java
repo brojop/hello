@@ -9,6 +9,8 @@ import java.util.*;
 
 public class Main {
 
+	
+
 	public static void main(String[] args) {
 
 		try (Scanner s = new Scanner(System.in)) {
@@ -32,8 +34,7 @@ public class Main {
 					if (usernameResult.next()) {
 						System.out.println("Your username is in the Database");
 					} else {
-						System.out.println("User does not exist, please try again");
-						continue;
+						System.out.println("Your username isn't in the Database");
 					}
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
@@ -54,25 +55,23 @@ public class Main {
 
 					// Check if any rows are returned
 					if (passwordResult.next()) {
-						System.out.println("Successfully logged in!");
+						System.out.println("Your Password is in the Database");
 					} else {
-						System.out.println("Incorrect password, please try again");
-						continue;
+						System.out.println("Your Password isn't in the Database");
 					}
 				} catch (SQLException e) {
 
 					e.printStackTrace();
 				}
-
 				
 				while(true) {
 				Screens.accountWindow();
 				userInput = s.next();
-				
+
 				switch (userInput) {
 
 				case "P":
-					Screens.postWindow();
+					
 					String statement3 = "SELECT * FROM Post";
 					try {
 						PreparedStatement SQLcheck = connection.prepareStatement(statement3);
@@ -89,7 +88,8 @@ public class Main {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-
+					Screens.postWindow();
+					System.out.println("|  Current User :           "+Username+"         |");
 					userInput = s.next();
 					while (true) {
 						switch (userInput) {
@@ -117,7 +117,10 @@ public class Main {
 								e.printStackTrace();
 							}
 
-														
+							
+							Screens.postWindow();
+							System.out.println("|  Current User :           "+Username+"         |");
+							
 							try {
 								PreparedStatement SQLcheck = connection.prepareStatement(statement3);
 								ResultSet postPrint = SQLcheck.executeQuery();
@@ -133,9 +136,6 @@ public class Main {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
-							Screens.postWindow();
-							userInput = s.next();
-							
 							continue;
 
 						case "B":
@@ -148,23 +148,41 @@ public class Main {
 						}
 						break;
 					}
-					 break;
+					continue;
 
 				case "V":
 					Screens.visibilityWindow();
+					System.out.println("|  Current User :           "+Username+"         |");
 					userInput = s.next();
 					while (true) {
 						switch (userInput) {
 						case "+":
-							System.out.println("Who would you like to add to your visibility list: ");
-							String userAdd = s.next();
+							String visualInsert = "INSERT INTO Visibility ( username, visibleUsername) VALUES ( ?, ?)";
+							System.out.println("Please decide who you want to see your posts ");
+							String addVisual = s.next();
+							try {
+								PreparedStatement SQLInsert = connection.prepareStatement(visualInsert);
+								
+								SQLInsert.setString(1, Username);
+								SQLInsert.setString(2, addVisual);
+								int rowsAdded = SQLInsert.executeUpdate();
+								if (rowsAdded > 0) {
+									System.out.println("Data inserted successfully!");
+								} else {
+									System.out.println("Failed to insert data.");
+								}
+								
+							} catch (SQLException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
 							
 							continue;
 
 						case "-":
-							System.out.println("Who would you like to remove from your visibility list: ");
-							String userRemove = s.next();
-
+							String visualDelete = "DELETE FROM Visibility WHERE column_name = ?";
+							System.out.println("Who would you like to not see your posts");
+							String deleteVisual = s.next();
 							continue;
 
 						case "B":
@@ -177,7 +195,7 @@ public class Main {
 						}
 						break;
 					}
-					break;
+					continue;
 				/**
 				 * Admin window
 				 * 
@@ -193,9 +211,8 @@ public class Main {
 
 				}
 				close();
-				}
 			}
-
+			}
 		}
 	}
 
