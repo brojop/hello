@@ -14,34 +14,42 @@ public class User {
 		this.visibilityList = visibilityList;
 	}
 
+	// gets the UserID
 	public int getUserID() {
 		return userID;
 	}
 
+	// sets the UserID
 	public void setUserID(int userID) {
 		this.userID = userID;
 	}
 
+	// gets the Username
 	public String getUsername() {
 		return username;
 	}
 
+	// sets the Username
 	public void setUsername(String username) {
 		this.username = username;
 	}
 
+	// gets the Password
 	public String getPassword() {
 		return password;
 	}
 
+	// sets the Password
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
+	// gets the Visibility
 	public String getVisibilityList() {
 		return visibilityList;
 	}
 
+	// sets the Visibility
 	public void setVisibilityList(String visibilityList) {
 		this.visibilityList = visibilityList;
 	}

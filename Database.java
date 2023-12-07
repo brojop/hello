@@ -13,6 +13,9 @@ public class Database {
 	public final static String password = "YogaepaeS9oo"; // your database password
 	public final static String url = "jdbc:mysql://" + hostname + "/" + username;
 
+	/**
+	 * this method connects this java project to the SQL server
+	 */
 	public static Connection SQLconnect() {
 		Connection connection = null;
 		try {
@@ -26,6 +29,9 @@ public class Database {
 		return connection;
 	}
 
+	/**
+	 * Counts the amount of rows in the users table
+	 */
 	String tableName = "Users";
 	int numberofRows = getnumberOfRows(url, username, password, tableName);
 

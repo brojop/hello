@@ -3,8 +3,11 @@ package unl.soc;
 import java.sql.Connection;
 
 public class Screens {
+	// connects this java file to the SQL database
 	Connection connection = Database.SQLconnect();
+	// counts the number of rows in the user table
 	static int users = Database.getnumberOfRows(null, null, null, null);
+	// shows who is currently logged in
 	static Class<User> Username = User.class;
 
 	public static final String ANSI_RESET = "\u001B[0m";
