@@ -1,7 +1,5 @@
 package unl.soc;
 
-import java.time.LocalDateTime;
-
 public class Post {
 	private int postID;
 	private int userID;

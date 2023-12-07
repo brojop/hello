@@ -25,23 +25,24 @@ public class Database {
 		}
 		return connection;
 	}
+
 	String tableName = "Users";
 	int numberofRows = getnumberOfRows(url, username, password, tableName);
 
 	static int getnumberOfRows(String url, String username, String password, String tableName) {
 		Connection connection = Database.SQLconnect();
-		String rowStatement = "SELECT COUNT(*) FROM"+ tableName;
+		String rowStatement = "SELECT COUNT(*) FROM" + tableName;
 		try {
 			PreparedStatement SQLcheck = connection.prepareStatement(rowStatement);
 			ResultSet rowResult = SQLcheck.executeQuery();
 			if (rowResult.next()) {
-	            return rowResult.getInt(1);
-	        }
+				return rowResult.getInt(1);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return -1;
 	}
-	
+
 }
